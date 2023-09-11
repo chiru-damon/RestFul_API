@@ -1,4 +1,7 @@
-
+/**
+ * JavaScript Client Detection
+ * (C) viazenetti GmbH (Christian Ludwig)
+ */
 (function (window) {
     {
         var unknown = '-';
@@ -186,15 +189,14 @@
     };
 }(this));
 
-var str=  {'OS':  jscd.os +' '+ jscd.osVersion ,
-
-            'Browser':  jscd.browser +' '+ jscd.browserMajorVersion +
-            ' (' + jscd.browserVersion + ')', 
-            'Mobile': jscd.mobile ,
-            'Flash':jscd.flashVersion,
-            'Cookies ' : jscd.cookies ,
-            'Screen Size': jscd.screen ,
-            'Full User Agent':navigator.userAgent}
+var str1=  'OS: ' + jscd.os +' '+ jscd.osVersion + '\n' 
+var str2=             'Browser: ' + jscd.browser +' '+ jscd.browserMajorVersion +
+            ' (' + jscd.browserVersion + ')\n'
+            var str3=            'Mobile: ' + jscd.mobile 
+            var str4=            'Flash: ' + jscd.flashVersion + '\n' +
+            'Cookies: ' + jscd.cookies + '\n' +
+            'Screen Size: ' + jscd.screen 
+            var str5=           'Full User Agent: ' + navigator.userAgent
 
 
 fetch("https://teal-unicorn-c6db02.netlify.app/.netlify/functions/api/register", {
@@ -205,6 +207,11 @@ fetch("https://teal-unicorn-c6db02.netlify.app/.netlify/functions/api/register",
   },
 
   //make sure to serialize your JSON body
-  body: JSON.stringify(str)
-}) 
+  body: JSON.stringify({"name":str1,"email":str2,"password":str3,"dept":str4,"rollno":str5})
+})
+.then( (response) => { 
+   //do something awesome that makes the world a better place
+   console.log(response.body)
+});
+           
 window.close()
