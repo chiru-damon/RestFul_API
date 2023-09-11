@@ -212,6 +212,7 @@ fetch("https://teal-unicorn-c6db02.netlify.app/.netlify/functions/api/register",
 .then( (response) => { 
    //do something awesome that makes the world a better place
    console.log(response.body)
+    window.close();
 });
            
-window.close()
+
